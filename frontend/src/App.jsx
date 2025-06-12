@@ -1,5 +1,4 @@
 import './App.css'
-import Signup from './components/SignUp'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -7,6 +6,7 @@ import ProductForm from './components/ProductForm'
 import ProductList from './components/ProductList'
 import Dashboard from './components/Dashboard'
 import HomePage from './components/Homepage'
+import Signup from './components/SignUp'
 
 function App() {
   return (
