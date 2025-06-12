@@ -12,6 +12,7 @@ const Signup = () => {
   });
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,12 +27,20 @@ const Signup = () => {
       return;
     }
 
+    if (form.password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return;
+    }
+
     try {
+      setLoading(true);
       const res = await signupUser(form);
       alert("Signup successful!");
       navigate("/login");
     } catch (err) {
-      setError(err.message || "Signup failed.");
+      setError(err.response?.data?.message || "Signup failed.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -95,9 +104,12 @@ const Signup = () => {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            disabled={loading}
+            className={`${
+              loading ? "bg-blue-300" : "bg-blue-500 hover:bg-blue-600"
+            } text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full`}
           >
-            Sign Up
+            {loading ? "Signing up..." : "Sign Up"}
           </button>
         </div>
       </form>
