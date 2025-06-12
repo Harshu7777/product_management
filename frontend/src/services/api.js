@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// Create an Axios instance
+// Create axios instance
 const api = axios.create({
-  baseURL: "http://localhost:8000", // Adjust for deployment if needed
+  baseURL: import.meta.env.VITE_BACKEND_URL || "http://localhost:8000",
 });
 
 // Automatically add token to every request if present
