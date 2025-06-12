@@ -6,7 +6,7 @@ import ProductForm from './components/ProductForm'
 import ProductList from './components/ProductList'
 import Dashboard from './components/Dashboard'
 import HomePage from './components/Homepage'
-import Signup from './components/SignUp'
+import Signup from './components/Signup'
 
 function App() {
   return (
